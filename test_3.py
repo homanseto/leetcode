@@ -1,0 +1,1 @@
+string_list = ["a", "b","c", "c", "d", "e", "f"]
