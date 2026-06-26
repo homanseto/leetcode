@@ -1,6 +1,9 @@
 # TimeStamp in database(PostGreSQL) with Coordinate Universal Time(UTC) for Global CRUD Workflow:
 
 PostgreSQL always converts the incoming timestamp to UTC (UTC+0) before writing it to disk when using the TIMESTAMPTZ data type.
+Automatic UTC normalization: When you insert data, PostgreSQL automatically converts any incoming time to UTC and stores it as a absolute point in time.
+Prevents server-bias bugs: TIMESTAMP WITHOUT TIME ZONE strips away the context. If an engineer forgets to append 'UTC' during a manual insert, the database will assume the server's local time zone, corrupting your data.
+Safer analytics: SQL queries that aggregate data across different global regions will automatically calculate correctly because the base data is explicitly recognized by the engine as UTC.
 
 # Setup: Database Schema
 
